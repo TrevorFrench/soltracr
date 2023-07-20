@@ -5,27 +5,27 @@
     "type": "markdown",
     "hash": "0",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1689896108059.0,
     "source_on_save": false,
     "relative_order": 6,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "1,0",
+        "cursorPosition": "2,140",
         "scrollLine": "0",
-        "rmdVisualMode": "true",
+        "rmdVisualMode": "false",
         "rmdVisualWrapConfigured": "true",
         "docOutlineVisible": "0",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "2:0"
+        "rmdVisualModeLocation": "66:0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1689896523,
+    "lastKnownWriteTime": 1689896889,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1689896763416,
+    "last_content_update": 1689896889127,
     "read_only": false,
     "read_only_alternatives": []
 }
