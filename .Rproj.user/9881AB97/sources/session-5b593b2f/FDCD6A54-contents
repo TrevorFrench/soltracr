@@ -1,0 +1,11 @@
+Package: soltracr
+Type: Package
+Title: Tools to Analyze the Solana Blockchain
+Version: 0.1.0
+Author: Trevor French
+Maintainer: Trevor French <FrenchTrevor@outlook.com>
+Description: Tools to Analyze the Solana Blockchain
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.1
