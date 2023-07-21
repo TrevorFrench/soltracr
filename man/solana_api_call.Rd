@@ -4,10 +4,12 @@
 \alias{solana_api_call}
 \title{solana_api_call}
 \usage{
-solana_api_call(url)
+solana_api_call(url, request_body)
 }
 \arguments{
 \item{url}{the RPC url for your API call}
+
+\item{request_body}{the request body for your API call}
 }
 \value{
 returns data from your solana API call
