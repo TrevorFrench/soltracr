@@ -4,10 +4,15 @@
 \alias{get_signature_for_address}
 \title{get_signature_for_address}
 \usage{
-get_signature_for_address(url)
+get_signature_for_address(url, address, limit = NULL)
 }
 \arguments{
 \item{url}{the RPC url for your API call}
+
+\item{address}{the address for which you're retrieving signatures}
+
+\item{limit}{maximum transaction signatures to return (between 1 and 1,000).
+Default is 1,000.}
 }
 \value{
 Returns signatures for confirmed transactions that include the given

@@ -13,7 +13,6 @@
 
 solana_api_call <- function(url, request_body) {
   headers <- c("Content-Type" = "application/json")
-
   response <- httr::POST(url, httr::add_headers(.headers = headers), body = request_body)
 
   if (httr::status_code(response) == 200) {
@@ -42,7 +41,7 @@ assemble_key_pair <- function(key, pair) {
   if(is.null(pair)){
     keypair = ''
   } else {
-    keypair = paste('"',key,'": ',pair, sep = '')
+    keypair = paste('"',key,'":',pair, sep = '')
   }
   return(keypair)
 }
@@ -60,7 +59,8 @@ assemble_key_pair <- function(key, pair) {
 
 assemble_list <- function(character_vector) {
   character_vector <- character_vector[character_vector != '']
-  return(cat(character_vector, sep = ','))
+  character_vector <- paste(character_vector, collapse = ',')
+  return(character_vector)
 }
 
 #' assemble_request_body
@@ -112,7 +112,7 @@ get_signature_for_address <- function(url, address, limit = NULL) {
   character_vector <- c(limit)
   config_object <- assemble_list(character_vector)
   params <- paste('["',address,'", {',config_object,'}]', sep = '')
-  request_body <- assemble_request_body('2.0', 'null', 'getSignaturesForAddress', params)
+  request_body <- assemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)
   solana_api_call(url, request_body)
 }
 
@@ -129,11 +129,8 @@ get_signature_for_address <- function(url, address, limit = NULL) {
 #' url <- "http://localhost:8899"
 #' data <- get_signature_for_address(url)}
 
-get_account_info <- function(url, address, limit = NULL) {
-  limit <- assemble_key_pair('limit', limit)
-  character_vector <- c(limit)
-  config_object <- assemble_list(character_vector)
-  params <- paste('["',address,'", {',config_object,'}]', sep = '')
-  request_body <- assemble_request_body('2.0', 'null', 'getSignaturesForAddress', params)
+get_account_info <- function(url, address) {
+  params <- paste('["',address,'"]', sep = '')
+  request_body <- assemble_request_body('"2.0"', 'null', '"getAccountInfo"', params)
   solana_api_call(url, request_body)
 }
