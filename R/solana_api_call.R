@@ -24,9 +24,78 @@ solana_api_call <- function(url, request_body) {
   }
 }
 
+#' assemble_key_pair
+#'
+#' @param key the key for your key pair
+#' @param pair the pair for your key pair
+#'
+#' @return Returns your key pair if it exists or a blank string if it doesn't
+#' exist
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' limit <- NULL
+#' limit <- assemble_key_pair('limit', limit)}
+
+assemble_key_pair <- function(key, pair) {
+  if(is.null(pair)){
+    keypair = ''
+  } else {
+    keypair = paste('"',key,'": ',pair, sep = '')
+  }
+  return(keypair)
+}
+
+#' assemble_config_object
+#'
+#' @param character_vector the character vector used to create the config object
+#' @return Returns your config object
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' limit <- NULL
+#' limit <- assemble_key_pair('limit', limit)}
+
+assemble_list <- function(character_vector) {
+  character_vector <- character_vector[character_vector != '']
+  return(cat(character_vector, sep = ','))
+}
+
+#' assemble_request_body
+#'
+#' @param jsonrpc the jsonrpc for your request body
+#' @param id the id for your request body
+#' @param method the method for your request body
+#' @param params the parameters for your request body
+#'
+#' @return Returns the request body for your solana API call
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' limit <- assemble_key_pair('limit', limit)
+#' params <- paste('["',address,'", {',limit,'}]', sep = '')
+#' request_body <- assemble_request_body('2.0', 'null', 'getSignaturesForAddress', params)}
+
+assemble_request_body <- function(jsonrpc, id, method, params) {
+  jsonrpc <- assemble_key_pair('jsonrpc', jsonrpc)
+  id <- assemble_key_pair('id', id)
+  method <- assemble_key_pair('method', method)
+  params <- assemble_key_pair('params', params)
+  character_vector <- c(jsonrpc, id, method, params)
+  body <- assemble_list(character_vector)
+  request_body <- paste('{',body,'}', sep = '')
+  return(request_body)
+}
+
 #' get_signature_for_address
 #'
 #' @param url the RPC url for your API call
+#' @param address the address for which you're retrieving signatures
+#' @param limit maximum transaction signatures to return (between 1 and 1,000).
+#' Default is 1,000.
 #'
 #' @return Returns signatures for confirmed transactions that include the given
 #' address in their accountKeys list. Returns signatures backwards in time from
@@ -38,14 +107,33 @@ solana_api_call <- function(url, request_body) {
 #' url <- "http://localhost:8899"
 #' data <- get_signature_for_address(url)}
 
-get_signature_for_address <- function(url) {
+get_signature_for_address <- function(url, address, limit = NULL) {
+  limit <- assemble_key_pair('limit', limit)
+  character_vector <- c(limit)
+  config_object <- assemble_list(character_vector)
+  params <- paste('["',address,'", {',config_object,'}]', sep = '')
+  request_body <- assemble_request_body('2.0', 'null', 'getSignaturesForAddress', params)
+  solana_api_call(url, request_body)
+}
 
-  request_body <- '{
-    "jsonrpc": "2.0",
-    "id": null,
-    "method": "getSignaturesForAddress",
-    "params": ["7H3bquJXx8nhnYUDFcJixrkX8GkpgL8Sv4ZGP34M9gnx", {"limit": 1000}]
-  }'
+#' get_account_info
+#'
+#' @param url the RPC url for your API call
+#' @param address the address for which you're retrieving signatures
+#'
+#' @return Returns all information associated with the account of provided Pubkey
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' url <- "http://localhost:8899"
+#' data <- get_signature_for_address(url)}
 
+get_account_info <- function(url, address, limit = NULL) {
+  limit <- assemble_key_pair('limit', limit)
+  character_vector <- c(limit)
+  config_object <- assemble_list(character_vector)
+  params <- paste('["',address,'", {',config_object,'}]', sep = '')
+  request_body <- assemble_request_body('2.0', 'null', 'getSignaturesForAddress', params)
   solana_api_call(url, request_body)
 }
