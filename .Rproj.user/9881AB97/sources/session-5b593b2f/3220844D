@@ -3,7 +3,7 @@
     "path": "C:/Users/Trevor French/OneDrive - TaxBit/Desktop/R_Scripts/soltracr/README.md",
     "project_path": "README.md",
     "type": "markdown",
-    "hash": "0",
+    "hash": "2947534643",
     "contents": "",
     "dirty": false,
     "created": 1689896108059.0,
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "0,0",
-        "scrollLine": "0",
+        "cursorPosition": "25,25",
+        "scrollLine": "3",
         "rmdVisualMode": "false",
         "rmdVisualWrapConfigured": "true",
         "docOutlineVisible": "0",
@@ -21,11 +21,11 @@
         "rmdVisualModeLocation": "66:0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1689955724,
+    "lastKnownWriteTime": 1689955845,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1689955724610,
+    "last_content_update": 1689955845945,
     "read_only": false,
     "read_only_alternatives": []
 }

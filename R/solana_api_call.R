@@ -119,7 +119,7 @@ get_signature_for_address <- function(url, address, limit = NULL) {
 #' get_account_info
 #'
 #' @param url the RPC url for your API call
-#' @param address the address for which you're retrieving signatures
+#' @param address the address for which you're retrieving account info
 #'
 #' @return Returns all information associated with the account of provided Pubkey
 #' @export
@@ -127,10 +127,130 @@ get_signature_for_address <- function(url, address, limit = NULL) {
 #' @examples
 #' \dontrun{
 #' url <- "http://localhost:8899"
-#' data <- get_signature_for_address(url)}
+#' address <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
+#' data <- get_account_info(url, address)}
 
 get_account_info <- function(url, address) {
   params <- paste('["',address,'"]', sep = '')
   request_body <- assemble_request_body('"2.0"', 'null', '"getAccountInfo"', params)
+  solana_api_call(url, request_body)
+}
+
+#' get_block_height
+#'
+#' @param url the RPC url for your API call
+#'
+#' @return Returns the current block height of the node
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' url <- "http://localhost:8899"
+#' data <- get_block_height(url)}
+
+get_block_height <- function(url, address) {
+  request_body <- assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
+  solana_api_call(url, request_body)
+}
+
+#' get_health
+#'
+#' @param url the RPC url for your API call
+#'
+#' @return Returns the current health of the node.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' url <- "http://localhost:8899"
+#' data <- get_health(url)}
+
+get_health <- function(url, address) {
+  request_body <- assemble_request_body('"2.0"', 'null', '"getHealth"', NULL)
+  solana_api_call(url, request_body)
+}
+
+#' get_version
+#'
+#' @param url the RPC url for your API call
+#'
+#' @return Returns the current Solana version running on the node
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' url <- "http://localhost:8899"
+#' data <- get_version(url)}
+
+get_version <- function(url, address) {
+  request_body <- assemble_request_body('"2.0"', 'null', '"getVersion"', NULL)
+  solana_api_call(url, request_body)
+}
+
+#' get_supply
+#'
+#' @param url the RPC url for your API call
+#'
+#' @return Returns information about the current supply.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' url <- "http://localhost:8899"
+#' data <- get_supply(url)}
+
+get_supply <- function(url, address) {
+  request_body <- assemble_request_body('"2.0"', 'null', '"getSupply"', NULL)
+  solana_api_call(url, request_body)
+}
+
+#' get_identity
+#'
+#' @param url the RPC url for your API call
+#'
+#' @return Returns the identity pubkey for the current node
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' url <- "http://localhost:8899"
+#' data <- get_identity(url)}
+
+get_identity <- function(url, address) {
+  request_body <- assemble_request_body('"2.0"', 'null', '"getIdentity"', NULL)
+  solana_api_call(url, request_body)
+}
+
+#' get_inflation_rate
+#'
+#' @param url the RPC url for your API call
+#'
+#' @return Returns the specific inflation values for the current epoch
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' url <- "http://localhost:8899"
+#' data <- get_inflation_rate(url)}
+
+get_inflation_rate <- function(url, address) {
+  request_body <- assemble_request_body('"2.0"', 'null', '"getInflationRate"', NULL)
+  solana_api_call(url, request_body)
+}
+
+#' get_genesis_hash
+#'
+#' @param url the RPC url for your API call
+#'
+#' @return Returns the genesis hash
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' url <- "http://localhost:8899"
+#' data <- get_genesis_hash(url)}
+
+get_genesis_hash <- function(url, address) {
+  request_body <- assemble_request_body('"2.0"', 'null', '"getGenesisHash"', NULL)
   solana_api_call(url, request_body)
 }

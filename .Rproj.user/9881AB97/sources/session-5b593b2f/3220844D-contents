@@ -23,6 +23,9 @@ install.packages("remotes")
 remotes::install_github("TrevorFrench/soltracr")
 ```
 
+## Setting up an Endpoint
+
+
 ## Functions
 
 View the complete documentation [here](https://github.com/TrevorFrench/soltracr/wiki)

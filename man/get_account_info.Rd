@@ -9,7 +9,7 @@ get_account_info(url, address)
 \arguments{
 \item{url}{the RPC url for your API call}
 
-\item{address}{the address for which you're retrieving signatures}
+\item{address}{the address for which you're retrieving account info}
 }
 \value{
 Returns all information associated with the account of provided Pubkey
@@ -20,5 +20,6 @@ get_account_info
 \examples{
 \dontrun{
 url <- "http://localhost:8899"
-data <- get_signature_for_address(url)}
+address <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
+data <- get_account_info(url, address)}
 }
