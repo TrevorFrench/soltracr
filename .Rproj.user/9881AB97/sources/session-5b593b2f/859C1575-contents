@@ -80,12 +80,12 @@ assemble_list <- function(character_vector) {
 #' request_body <- assemble_request_body('2.0', 'null', 'getSignaturesForAddress', params)}
 
 assemble_request_body <- function(jsonrpc, id, method, params) {
-  jsonrpc <- assemble_key_pair('jsonrpc', jsonrpc)
-  id <- assemble_key_pair('id', id)
-  method <- assemble_key_pair('method', method)
-  params <- assemble_key_pair('params', params)
+  jsonrpc <- soltracr::assemble_key_pair('jsonrpc', jsonrpc)
+  id <- soltracr::assemble_key_pair('id', id)
+  method <- soltracr::assemble_key_pair('method', method)
+  params <- soltracr::assemble_key_pair('params', params)
   character_vector <- c(jsonrpc, id, method, params)
-  body <- assemble_list(character_vector)
+  body <- soltracr::assemble_list(character_vector)
   request_body <- paste('{',body,'}', sep = '')
   return(request_body)
 }
@@ -108,11 +108,11 @@ assemble_request_body <- function(jsonrpc, id, method, params) {
 #' data <- get_signature_for_address(url)}
 
 get_signature_for_address <- function(url, address, limit = NULL) {
-  limit <- assemble_key_pair('limit', limit)
+  limit <- soltracr::assemble_key_pair('limit', limit)
   character_vector <- c(limit)
-  config_object <- assemble_list(character_vector)
+  config_object <- soltracr::assemble_list(character_vector)
   params <- paste('["',address,'", {',config_object,'}]', sep = '')
-  request_body <- assemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)
+  request_body <- soltracr::assemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)
   solana_api_call(url, request_body)
 }
 
@@ -132,7 +132,7 @@ get_signature_for_address <- function(url, address, limit = NULL) {
 
 get_account_info <- function(url, address) {
   params <- paste('["',address,'"]', sep = '')
-  request_body <- assemble_request_body('"2.0"', 'null', '"getAccountInfo"', params)
+  request_body <- soltracr::assemble_request_body('"2.0"', 'null', '"getAccountInfo"', params)
   solana_api_call(url, request_body)
 }
 
@@ -149,7 +149,7 @@ get_account_info <- function(url, address) {
 #' data <- get_block_height(url)}
 
 get_block_height <- function(url, address) {
-  request_body <- assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
+  request_body <- soltracr::assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
   solana_api_call(url, request_body)
 }
 
@@ -166,7 +166,7 @@ get_block_height <- function(url, address) {
 #' data <- get_health(url)}
 
 get_health <- function(url, address) {
-  request_body <- assemble_request_body('"2.0"', 'null', '"getHealth"', NULL)
+  request_body <- soltracr::assemble_request_body('"2.0"', 'null', '"getHealth"', NULL)
   solana_api_call(url, request_body)
 }
 
@@ -183,7 +183,7 @@ get_health <- function(url, address) {
 #' data <- get_version(url)}
 
 get_version <- function(url, address) {
-  request_body <- assemble_request_body('"2.0"', 'null', '"getVersion"', NULL)
+  request_body <- soltracr::assemble_request_body('"2.0"', 'null', '"getVersion"', NULL)
   solana_api_call(url, request_body)
 }
 
@@ -200,7 +200,7 @@ get_version <- function(url, address) {
 #' data <- get_supply(url)}
 
 get_supply <- function(url, address) {
-  request_body <- assemble_request_body('"2.0"', 'null', '"getSupply"', NULL)
+  request_body <- soltracr::assemble_request_body('"2.0"', 'null', '"getSupply"', NULL)
   solana_api_call(url, request_body)
 }
 
@@ -217,7 +217,7 @@ get_supply <- function(url, address) {
 #' data <- get_identity(url)}
 
 get_identity <- function(url, address) {
-  request_body <- assemble_request_body('"2.0"', 'null', '"getIdentity"', NULL)
+  request_body <- soltracr::assemble_request_body('"2.0"', 'null', '"getIdentity"', NULL)
   solana_api_call(url, request_body)
 }
 
@@ -234,7 +234,7 @@ get_identity <- function(url, address) {
 #' data <- get_inflation_rate(url)}
 
 get_inflation_rate <- function(url, address) {
-  request_body <- assemble_request_body('"2.0"', 'null', '"getInflationRate"', NULL)
+  request_body <- soltracr::assemble_request_body('"2.0"', 'null', '"getInflationRate"', NULL)
   solana_api_call(url, request_body)
 }
 
@@ -251,6 +251,6 @@ get_inflation_rate <- function(url, address) {
 #' data <- get_genesis_hash(url)}
 
 get_genesis_hash <- function(url, address) {
-  request_body <- assemble_request_body('"2.0"', 'null', '"getGenesisHash"', NULL)
+  request_body <- soltracr::assemble_request_body('"2.0"', 'null', '"getGenesisHash"', NULL)
   solana_api_call(url, request_body)
 }
