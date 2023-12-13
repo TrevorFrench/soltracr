@@ -2,7 +2,7 @@
 
 # soltracr
 
-An R package to interact with the Solana RPC API.
+An R package to interact with the Solana RPC API. (Moving to Cryptotrackr)
 
 ## ✍️ Author
 
